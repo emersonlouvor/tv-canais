@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta name="referrer" content="no-referrer-when-downgrade" />
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  
+  <meta name="description" content="EMERSONLOUVOR - O melhor conteúdo para donas de casa. Dicas de decoração, receitas, faxina e vlog sobre o universo feminino." />
+  <link rel="icon" href="data/assets/dicasdasol.png" type="image/png">
+  <title>EMERSONLOUVOR</title>
+
+  <script>
+    (function applyEarlyTheme() {
+      const stored = localStorage.getItem('theme');
+      const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+      if (stored === 'dark' || (!stored && prefersDark)) {
+        document.documentElement.classList.add('dark');
+      }
+    })();
+  </script>
+
+  <link rel="stylesheet" href="css/styles.css?v=v2_final">
+  
+</head>
+
+<body>
+  
+  <header id="mainHeader">
+    <h1>EMERSONLOUVOR</h1>
+    <nav>
+      <button onclick="loadHome()" class="nav-link">Home</button>
+      <button onclick="loadAbout()" class="nav-link">Sobre</button>
+    </nav>
+    <div class="search-bar">
+      <input type="text" id="search" placeholder="Pesquisar vídeos..." aria-label="Pesquisar vídeos" onkeypress="if(event.key === 'Enter') abrirTecladoVirtual()" />
+    </div>
+  </header>
+
+  <div id="virtualKeyboard" style="display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background-color: rgba(0, 0, 0, 0.95); z-index: 2000; flex-direction: column; justify-content: center; align-items: center;">
+    <h2 style="color: white; margin-bottom: 20px;">Pesquisar Vídeos</h2>
+    <div style="background: white; padding: 10px 20px; border-radius: 8px; width: 90%; max-width: 600px; margin-bottom: 20px; text-align: center;">
+      <span id="vkTexto" style="font-size: 24px; font-weight: bold; color: black;"></span>
+      <span style="font-size: 24px; color: gray; animation: blink 1s infinite;">|</span>
+    </div>
+    <div id="vkGrid" style="display: grid; grid-template-columns: repeat(6, 1fr); gap: 10px; max-width: 600px; width: 90%;"></div>
+  </div>
+
+  <main class="container">
+    <section id="homeSection">
+      <div id="videos" class="grid"></div>
+      <div class="load-more-container" style="text-align:center; margin:20px;">
+        <button onclick="loadMore()">Carregar mais</button>
+      </div>
+    </section>
+
+    <section id="aboutSection" style="display:none; text-align:left;">
+      <h2>Sobre o canal</h2>
+      <p>Bem-vindos ao canal EMERSONLOUVOR!</p>
+      <p>Meu nome é Emerson Ricardo da Silva,
+        conhecido como Emerson Louvor.
+        Sou cantor, compositor e criador de conteúdo. Aqui você encontra minhas músicas autorais, louvores, projetos musicais e conteúdos especiais.</p>
+      <p>Desde 2019 venho compondo canções como <strong>As Vogais</strong>, <strong>Os 5 Sentidos do Corpo Humano</strong> e <strong>Quando Jesus Chega</strong>, sempre buscando levar inspiração e emoção através da música.</p>
+      <p>Inscreva-se no canal e faça parte desta caminhada. Deus abençoe!</p>
+    </section>
+  </main>
+
+  <footer class="footer">
+  <p>&copy; <span id="currentYear"></span> Emerson Louvor - Todos os direitos reservados.</p>
+  <p>
+    Siga nas redes:
+    <a href="https://www.instagram.com/emersonlouvor" target="_blank" rel="noopener noreferrer">Instagram</a> |
+    <a href="https://www.youtube.com/@Emersonlouvor" target="_blank" rel="noopener noreferrer">YouTube</a>
+  </p>
+</footer>
+
+  <div id="videoPlayerWrapper" style="display: none; position: fixed; z-index: 99999; inset: 0;">
+    <button class="close-btn" onclick="closeVideo()" aria-label="Fechar vídeo">&times;</button>
+    
+    <div id="videoPlayer"></div>
+    
+    <div id="adContainer" style="margin-top: 10px; padding: 20px; color: white; max-width: 80%; text-align: left;"></div>
+  </div>
+
+  <script src="js/theme.js"></script>
+  <script src="js/main.js?v=player_inteligente"></script>
+  
+</body>
+</html>
